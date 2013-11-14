@@ -149,10 +149,10 @@ int main(int argc, char **argv) {
 				if (!resolvedHost) {
 					ERROR("could not resolve host \"%s\" (used by node %d) @ %s:%d", nodeHost, nodeId, confFilename, confLine);
 					++confErrors;
+				} else {
+					nodes[nodeId].address.sin_family = resolvedHost->h_addrtype;
+					memcpy(&nodes[nodeId].address.sin_addr, resolvedHost->h_addr_list[0], resolvedHost->h_length);
 				}
-
-				nodes[nodeId].address.sin_family = resolvedHost->h_addrtype;
-				memcpy(&nodes[nodeId].address.sin_addr, resolvedHost->h_addr_list[0], resolvedHost->h_length);
 			}
 
 			DBG("conf -> node %d %d %s(%s)", nodeId, nodePort, nodeHost, nodeAddressPretty(&nodes[nodeId]));

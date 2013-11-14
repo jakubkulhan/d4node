@@ -13,7 +13,7 @@ Simple UDP messaging program with (sort of) auto-discovery.
 	
 	CONFIGURATION
 	
-	    Every line is one statement. There are 2 kinds of statements.
+	    Every line is one statement, one of the following:
 	
 	        node <id> <port> [ <ip> ]
 	

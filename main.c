@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 			"\n"
 			"CONFIGURATION\n"
 			"\n"
-			"    Every line is one statement. There are 2 kinds of statements.\n"
+			"    Every line is one statement, one of the following:\n"
 			"\n"
 			"        node <id> <port> [ <ip> ]\n"
 			"\n"

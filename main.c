@@ -61,6 +61,10 @@ int main(int argc, char **argv) {
 			"\n"
 			"            <millis>  number of milliseconds after which message is tried to be sent again\n"
 			"\n"
+			"        resend_tries <n>\n"
+			"\n"
+			"            <n>  count of times message is being resent\n"
+			"\n"
 			"        acknowledge_timeout <millis>\n"
 			"\n"
 			"            <millis>  number of milliseconds after which acknowledge is considered to be delivered\n"
@@ -493,7 +497,7 @@ int main(int argc, char **argv) {
 								}
 
 								if (!message) {
-									printf("%05d: %s\n", fromId, bufRest);
+									printf("%04d: %s\n", fromId, bufRest);
 
 									message = messageAlloc();
 									message->from = fromId;
@@ -596,7 +600,7 @@ int main(int argc, char **argv) {
 					timeoutInit(&(*messageToBeSent)->timeout, resendTimeoutMillis);
 
 					if (nodes[(*messageToBeSent)->to].id < 0 || !nodes[(*messageToBeSent)->to].reachable || nodes[(*messageToBeSent)->to].serverId < 0) {
-						WARN("resending MSG-ID=%ld failed, node %d still unreachable (%d tries remaining)\n", (*messageToBeSent)->id, (*messageToBeSent)->to, (*messageToBeSent)->tries);
+						WARN("resending MSG-ID=%ld failed, node %d still unreachable (%d tries remaining)", (*messageToBeSent)->id, (*messageToBeSent)->to, (*messageToBeSent)->tries);
 
 					} else {
 						char bufSend[BUF_LENGTH];

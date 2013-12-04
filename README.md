@@ -34,6 +34,10 @@ Simple UDP messaging program with (sort of) auto-discovery.
 	
 	            <millis>  number of milliseconds after which message is tried to be sent again
 	
+	        resend_tries <n>
+	
+	            <n>  count of times message is being resent
+	
 	        acknowledge_timeout <millis>
 	
 	            <millis>  number of milliseconds after which acknowledge is considered to be delivered
